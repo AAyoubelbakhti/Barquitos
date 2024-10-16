@@ -33,12 +33,17 @@ public class MainActivity extends AppCompatActivity {
     private void createTable(TableLayout tableLayout) {
         for (int row = 1; row <= 10; row++) {
             TableRow tableRow = new TableRow(this);
+            tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+
             for (char colChar = 'A'; colChar <= 'J'; colChar++) {
                 String buttonText = colChar + String.valueOf(row);
+
                 Button button = new Button(this);
                 button.setText(buttonText);
+                TableRow.LayoutParams params1 = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f);
+                button.setLayoutParams(params1);
                 button.setOnClickListener(v -> {
-                    Toast.makeText(MainActivity.this, "Has pulsado " + buttonText, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Has pulsado en la coordenada " + buttonText, Toast.LENGTH_SHORT).show();
                 });
                 tableRow.addView(button);
             }
